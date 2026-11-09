@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id_rol']     = $user['id_rol'];
                 $_SESSION['login_time'] = time();
 
-                header('Location: dashboard.php');
+                header('Location: index.php');
                 exit();
 
             } else {
