@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             //conectar a la base de datos
-            require_once 'conexion.php';
+            require_once 'config/conexion.php';
 
             //verificar si el email ya existe en la tabla 'usuarios'
             $stmt = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = ?");

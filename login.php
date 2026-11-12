@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             //conectar a la base de datos
-            require_once 'conexion.php';
+            require_once 'config/conexion.php';
 
             //buscar el usuario en la tabla usuarios
             $stmt = $pdo->prepare(
