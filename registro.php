@@ -71,26 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="split-layout">
     <aside class="left-panel">
-        <svg class="brand-logo" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 35C25 32 45 30 75 48" stroke="white" stroke-width="3" stroke-linecap="round"/>
-            <path d="M10 42C30 40 48 40 68 52" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M18 48C32 47 45 48 58 55" stroke="white" stroke-width="2" stroke-linecap="round"/>
-            <path d="M25 22C50 12 72 10 85 16C90 19 93 28 92 38C91 44 85 46 78 44C62 36 45 28 25 22Z" stroke="white" stroke-width="3" fill="#2c303a"/>
-            <path d="M72 16L86 20C88 24 88 30 86 34L73 30C71 25 71 20 72 16Z" fill="white"/>
-            <path d="M35 20L65 16L66 26L38 24Z" fill="white"/>
-        </svg>
+        <img class="brand-logo" src="assets/LOGO CORTO BLANCO 3.1.svg" alt="Rutas Express">
 
         <div class="hero-text">
             <h1>¡Bienvenido a<br>Rutas<br>Express!</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate ut laoreet velit ma.</p>
         </div>
 
-        <div class="illustration-card">
-            <svg width="120" height="90" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="24" r="10" fill="#2c303a"/>
-                <path d="M8 78L42 38L68 65L84 46L112 78H8Z" fill="#2c303a"/>
-            </svg>
-        </div>
     </aside>
 
     <main class="right-panel">
@@ -159,9 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <button type="button" class="btn-google">
-                <svg width="15" height="15" viewBox="0 0 24 24">
-                    <path fill="#1e232a" d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81Z"/>
-                </svg>
+                <img width="15" height="15" src="assets/google.png" >
                 Iniciar sesión con Google
             </button>
         </div>

@@ -19,7 +19,6 @@ body {
     background: #ffffff;
 }
 
-/* PANEL IZQUIERDO */
 .left-panel {
     width: 48%;
     background-color: #2c303a;
@@ -27,7 +26,7 @@ body {
     padding: 40px 56px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     position: relative;
@@ -41,7 +40,8 @@ body {
 
 .hero-text {
     max-width: 380px;
-    margin-top: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .hero-text h1 {
@@ -58,19 +58,6 @@ body {
     line-height: 1.6;
 }
 
-.illustration-card {
-    background-color: #ffffff;
-    width: 175px;
-    height: 145px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* PANEL DERECHO */
 .right-panel {
     width: 52%;
     background-color: #ffffff;
@@ -104,7 +91,6 @@ body {
     color: #64748b;
 }
 
-/* MENSAJE DE ERROR PHP */
 .alert-error {
     background-color: #fee2e2;
     color: #991b1b;
@@ -117,7 +103,6 @@ body {
     font-weight: 500;
 }
 
-/* GRUPOS DE FORMULARIO */
 .form-group {
     margin-bottom: 18px;
 }
@@ -199,7 +184,6 @@ body {
     background-color: #2c303a;
 }
 
-/* SEPARADOR */
 .divider {
     display: flex;
     align-items: center;
@@ -220,7 +204,6 @@ body {
     padding: 0 10px;
 }
 
-/* BOTÓN GOOGLE */
 .btn-google {
     display: flex;
     align-items: center;
@@ -245,7 +228,6 @@ body {
     background-color: #f8fafc;
 }
 
-/* PIE DE PÁGINA */
 .bottom-text {
     position: absolute;
     bottom: 24px;
