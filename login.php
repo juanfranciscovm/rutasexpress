@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Por favor completa todos los campos.';
     } else {
         try {
-            require_once 'config/conexion.php';
+            require_once 'config/puente.php';
 
             $stmt = $pdo->prepare(
                 "SELECT id_usuario, username, email, password_hash, id_rol, 2FA_activo 

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Debes aceptar los términos y condiciones.';
     } else {
         try {
-            require_once 'config/conexion.php';
+            require_once 'config/puente.php';
 
             $stmt = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = ?");
             $stmt->execute([$email]);
