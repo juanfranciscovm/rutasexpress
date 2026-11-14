@@ -19,22 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Debes aceptar los términos y condiciones.';
     } else {
         try {
-            //conectar a la base de datos
             require_once 'config/conexion.php';
 
-            //verificar si el email ya existe en la tabla 'usuarios'
             $stmt = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = ?");
             $stmt->execute([$email]);
 
             if ($stmt->fetch()) {
                 $error = 'Este correo electrónico ya está registrado.';
             } else {
-                //cifrar la contraseña con password_hash()
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                $idRolDefault = 1; //rol 1 asignado a usuarios nuevos
-                $twoFaActivo  = 0; //2FA inactivo por defecto al registrarse
+                $idRolDefault = 1;
+                $twoFaActivo  = 0;
 
-                //insertar el nuevo usuario en la tabla 'usuarios'
                 $insert = $pdo->prepare(
                     "INSERT INTO usuarios (username, email, password_hash, 2FA_activo, id_rol) 
                      VALUES (?, ?, ?, ?, ?)"
@@ -64,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea tu cuenta — Rutas Express</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="registro.css">
+    <link rel="stylesheet" href="assets/css/theme.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="registro.css?v=<?= time() ?>">
 </head>
 <body>
 
@@ -74,10 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img class="brand-logo" src="assets/LOGO CORTO BLANCO 3.1.svg" alt="Rutas Express">
 
         <div class="hero-text">
-            <h1>¡Bienvenido a<br>Rutas<br>Express!</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate ut laoreet velit ma.</p>
+            <h1>¡Bienvenido a<br>Rutas Express!</h1>
+            <p>Regístrate y viaja con nosotros.</p>
         </div>
 
+        <img class="bus-img" src="assets/bus.png" alt="Autobús Rutas Express">
     </aside>
 
     <main class="right-panel">
@@ -96,38 +93,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="post" action="registro.php">
                 <div class="form-group">
                     <label for="nombre">Nombre completo</label>
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        required
-                        placeholder="Introduce tu nombre"
-                        value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>"
-                    >
+                    <div class="input-wrapper">
+                        <span class="material-symbols-rounded input-icon">person</span>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            required
+                            placeholder="Introduce tu nombre"
+                            value="<?= htmlspecialchars($_POST['nombre'] ?? '') ?>"
+                        >
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Correo electrónico o teléfono</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        placeholder="Introduce tu correo o teléfono"
-                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
-                    >
+                    <div class="input-wrapper">
+                        <span class="material-symbols-rounded input-icon">mail</span>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="Introduce tu correo o teléfono"
+                            value="<?= htmlspecialchars($_POST['email'] ?? '') ?>"
+                        >
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        minlength="8"
-                        required
-                        placeholder="Introduce tu contraseña"
-                    >
+                    <div class="input-wrapper password-wrapper">
+                        <span class="material-symbols-rounded input-icon">lock</span>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            minlength="8"
+                            required
+                            placeholder="Introduce tu contraseña"
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePass()" aria-label="Mostrar contraseña">
+                            <span class="material-symbols-rounded" id="eyeIcon">visibility_off</span>
+                        </button>
+                    </div>
                     <span class="helper-text">Debe tener al menos 8 caracteres</span>
                 </div>
 
@@ -146,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <button type="button" class="btn-google">
-                <img width="15" height="15" src="assets/google.png" >
+                <img width="16" height="16" src="assets/google.png" alt="Google">
                 Iniciar sesión con Google
             </button>
         </div>
@@ -156,6 +165,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </p>
     </main>
 </div>
+
+<script>
+function togglePass() {
+    const input = document.getElementById('password');
+    const eye = document.getElementById('eyeIcon');
+    if (input.type === 'password') {
+        input.type = 'text';
+        if (eye) eye.textContent = 'visibility';
+    } else {
+        input.type = 'password';
+        if (eye) eye.textContent = 'visibility_off';
+    }
+}
+</script>
 
 </body>
 </html>
